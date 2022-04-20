@@ -1,0 +1,164 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/main.cs" type="Script" id=1]
+[ext_resource path="res://scripts/Debug2D.cs" type="Script" id=2]
+[ext_resource path="res://scripts/Player.cs" type="Script" id=3]
+[ext_resource path="res://title_screen/assets/clouds.png" type="Texture" id=4]
+[ext_resource path="res://assets/buttons/BlueButtons.tres" type="StyleBox" id=5]
+[ext_resource path="res://assets/buttons/RedButtons.tres" type="StyleBox" id=6]
+[ext_resource path="res://scripts/CloudsMainScene.cs" type="Script" id=7]
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 59.2163, -1.25992, -59.2163, 1.25992, 115.54, -76.1207, 12.5992, 15.1191, -12.5992, -15.1191, 51.6323, -91.2568, 0, 0, 0, 0, 57.5186, -166.938, 45.769, -44.3778, -45.769, 44.3778, -18.162, -150.12, 10.0794, -28.9782, -10.0794, 28.9782, -196.549, 7.04985, 0, 0, 0, 0, -175.319, 173.673, 0, 0, 0, 0, -159.319, 259.673, -71.8376, -38.1637, 71.8376, 38.1637, -108.554, 344.183, -13.8591, 20.1587, 13.8591, -20.1587, 77.7186, 298.695, -114.491, 13.4695, 114.491, -13.4695, 585.394, 359.015, -14.592, 62.8579, 14.592, -62.8579, 664.766, 252.674, 28.9782, 25.1984, -28.9782, -25.1984, 147.311, 129.204, -28.9782, 6.29961, 28.9782, -6.29961, 161.903, 67.4682, -25.1984, 5.03968, 25.1984, -5.03968, 607.643, 39.0576, 16.379, 28.9782, -16.379, -28.9782, 665.913, -102.91, 31.498, 8.81945, -31.498, -8.81945, 195.512, -167.538, 0, 0, 0, 0, 115.54, -76.1207 )
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 24, 24 )
+
+[node name="GameScreen" type="Node"]
+script = ExtResource( 1 )
+playerOnePath = NodePath("Level/VBoxContainer/Circuit/Polygon2D/Path2D2/PlayerOne")
+playerTwoPath = NodePath("Level/VBoxContainer/Circuit/Polygon2D/Path2D/PlayerTwo")
+playerOneButtonPath = NodePath("Level/VBoxContainer/Buttons/HBoxContainer/MarginContainer/PlayerOneButton")
+playerTwoButtonPath = NodePath("Level/VBoxContainer/Buttons/HBoxContainer/MarginContainer2/PlayerTwoButton")
+
+[node name="Level" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = -360.0
+margin_right = 640.0
+margin_bottom = 360.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Level"]
+margin_right = 1280.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 1280, 720 )
+size_flags_horizontal = 7
+size_flags_vertical = 7
+
+[node name="Circuit" type="MarginContainer" parent="Level/VBoxContainer"]
+margin_right = 1280.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 0, 500 )
+size_flags_horizontal = 7
+size_flags_vertical = 3
+
+[node name="Polygon2D" type="Polygon2D" parent="Level/VBoxContainer/Circuit"]
+position = Vector2( 201, 118 )
+color = Color( 0.45098, 0.45098, 0.466667, 1 )
+polygon = PoolVector2Array( 101.901, 373.283, 381.901, 330.283, 712.046, 408.237, 727.901, 354.283, 239.901, 279.283, 316.306, 111.915, 781.458, 82.536, 779.901, 44.283, 560.901, 4.283, 337.901, -12.717, 296.901, 64.283, 204.901, 78.283, 190.901, -20.717, 139.901, 6.283, 91.901, -81.717, 241.168, -119.22, 279.558, -28.2557, 346.3, -109.681, 939.901, -34.717, 941.901, 81.283, 912.901, 177.283, 542.901, 204.283, 932.901, 276.283, 911.901, 465.283, 721.901, 509.283, 251.901, 450.283, 112.901, 504.283, -17.099, 471.283, -54.099, 16.283, 92.901, -81.717, 143.901, 6.283, 13.901, 119.283, 47.901, 361.283 )
+
+[node name="Path2D2" type="Path2D" parent="Level/VBoxContainer/Circuit/Polygon2D"]
+position = Vector2( 182.22, 74.61 )
+curve = SubResource( 2 )
+
+[node name="PlayerOne" type="Area2D" parent="Level/VBoxContainer/Circuit/Polygon2D/Path2D2"]
+position = Vector2( 59.9968, -132.205 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/VBoxContainer/Circuit/Polygon2D/Path2D2/PlayerOne"]
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Level/VBoxContainer/Circuit/Polygon2D/Path2D2/PlayerOne"]
+visible = false
+scale = Vector2( 0.0403124, 0.0403124 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Level/VBoxContainer/Circuit/Polygon2D/Path2D2/PlayerOne"]
+color = Color( 0.0235294, 0.105882, 0.972549, 1 )
+polygon = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
+
+[node name="Path2D" type="Path2D" parent="Level/VBoxContainer/Circuit/Polygon2D"]
+position = Vector2( 163.22, 131.61 )
+curve = SubResource( 2 )
+
+[node name="PlayerTwo" type="Area2D" parent="Level/VBoxContainer/Circuit/Polygon2D/Path2D"]
+position = Vector2( 59.9968, -132.205 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/VBoxContainer/Circuit/Polygon2D/Path2D/PlayerTwo"]
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Level/VBoxContainer/Circuit/Polygon2D/Path2D/PlayerTwo"]
+visible = false
+scale = Vector2( 0.0403124, 0.0403124 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Level/VBoxContainer/Circuit/Polygon2D/Path2D/PlayerTwo"]
+color = Color( 0.972549, 0.0235294, 0.290196, 1 )
+polygon = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
+
+[node name="Buttons" type="MarginContainer" parent="Level/VBoxContainer"]
+margin_top = 620.0
+margin_right = 1280.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 1280, 0 )
+mouse_filter = 1
+size_flags_horizontal = 7
+size_flags_vertical = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Level/VBoxContainer/Buttons"]
+margin_right = 1280.0
+margin_bottom = 100.0
+size_flags_horizontal = 7
+
+[node name="MarginContainer" type="MarginContainer" parent="Level/VBoxContainer/Buttons/HBoxContainer"]
+margin_right = 638.0
+margin_bottom = 100.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="PlayerOneButton" type="Button" parent="Level/VBoxContainer/Buttons/HBoxContainer/MarginContainer"]
+margin_left = 256.0
+margin_right = 381.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 125, 100 )
+size_flags_horizontal = 6
+size_flags_vertical = 4
+custom_styles/normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer2" type="MarginContainer" parent="Level/VBoxContainer/Buttons/HBoxContainer"]
+margin_left = 642.0
+margin_right = 1280.0
+margin_bottom = 100.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="PlayerTwoButton" type="Button" parent="Level/VBoxContainer/Buttons/HBoxContainer/MarginContainer2"]
+margin_left = 256.0
+margin_right = 381.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 125, 100 )
+size_flags_horizontal = 6
+size_flags_vertical = 4
+custom_styles/normal = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Debug2D" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+defaultArrowAngle = 60.0
+
+[node name="Clouds" type="Sprite" parent="."]
+position = Vector2( 640, 360 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+script = ExtResource( 7 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="Clouds" method="OnTimerTimeout"]
