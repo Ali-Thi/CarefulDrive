@@ -26,10 +26,11 @@ public class CloudsMainScene : Sprite
 		}
 	}
 	
-	private void OnTimerTimeout()
-	{
-		coordYAimed = coordYMiddleOfScreen;
-		translationSpeed = -translationSpeed;
-		animated = true;
-	}
+	//à remplacer nom de fonction, mais en gros c'est celle qui permet d'indiquer qu'il faut lancer l'animation
+//	private void OnTimerTimeout()
+//	{
+//		coordYAimed = coordYMiddleOfScreen;
+//		translationSpeed = -translationSpeed;
+//		animated = true;
+//	}
 }
