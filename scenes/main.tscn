@@ -1,0 +1,242 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scripts/Main.cs" type="Script" id=1]
+[ext_resource path="res://scripts/Debug2D.cs" type="Script" id=2]
+[ext_resource path="res://scripts/Player.cs" type="Script" id=3]
+[ext_resource path="res://scripts/Utils/Effects/Trail.cs" type="Script" id=4]
+[ext_resource path="res://assets/buttons/BlueButtons.tres" type="StyleBox" id=5]
+[ext_resource path="res://assets/buttons/RedButtons.tres" type="StyleBox" id=6]
+[ext_resource path="res://assets/labelsTheme.tres" type="Theme" id=7]
+[ext_resource path="res://assets/title_screen/clouds.png" type="Texture" id=8]
+[ext_resource path="res://scripts/CloudsMainScene.cs" type="Script" id=9]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 11.9774, 48.717 )
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 59.2163, -1.25992, -59.2163, 1.25992, 115.54, -76.1207, -5.77012, 3.77539, 5.77012, -3.77539, 51.6323, -91.2568, 0, 0, 0, 0, -59.4514, -214.054, 67.8643, -88.5684, -67.8643, 88.5684, -331.321, -165.873, 10.0794, -28.9782, -10.0794, 28.9782, -397.071, -74.9815, 0, 0, 0, 0, -380.211, -3.12552, 0, 0, 0, 0, -265.027, -1.71375, 0, 0, 0, 0, -219.831, -25.6103, 0, 0, 0, 0, -181.903, -11.6911, 0, 0, 0, 0, -190.573, 23.6421, 0, 0, 0, 0, -246.922, 28.9956, 0, 0, 0, 0, -317.359, 30.0663, 0, 0, 0, 0, -347.701, 55.7632, 0, 0, 0, 0, -357.454, 100.733, 0, 0, 0, 0, -334.697, 168.187, 0, 0, 0, 0, -298.937, 176.753, 0, 0, 0, 0, -240.311, 167.116, 0, 0, 0, 0, -201.409, 125.359, 0, 0, 0, 0, -174.318, 131.783, 0, 0, 0, 0, -158.641, 141.672, 0, 0, 0, 0, -149.394, 196.025, 0, 0, 0, 0, -107.132, 215.298, 0, 0, 0, 0, -47.5313, 208.874, 0, 0, 0, 0, 39.7766, 58.8565, 0, 0, 0, 0, 65.9106, 62.1874, 0, 0, 0, 0, 88.3954, 90.0257, 0, 0, 0, 0, 63.7692, 243.136, -71.8376, -38.1637, 71.8376, 38.1637, 50.9208, 371.621, -102.571, -29.4435, 102.571, 29.4435, 203.558, 197.349, 0, 0, 0, 0, 220.092, 367.338, 0, 0, 0, 0, 255.425, 395.176, 0, 0, 0, 0, 295.041, 371.621, -114.491, 13.4695, 114.491, -13.4695, 453.505, 215.298, 0, 0, 0, 0, 557.364, 386.611, -56.2326, 109.041, 56.2326, -109.041, 881.35, 256.937, 131.257, -20.279, -131.257, 20.279, 772.575, 186.389, 0, 0, 0, 0, 613.754, -4.1962, -0.660091, 185.13, 0.660091, -185.13, 300.58, 97.5207, 0, 0, 0, 0, 546.568, 144.632, 0, 0, 0, 0, 701.268, 164.975, -25.1984, 5.03968, 25.1984, -5.03968, 823.532, 56.7151, 16.379, 28.9782, -16.379, -28.9782, 862.077, -116.739, 0, 0, 0, 0, 750.032, -95.206, 0, 0, 0, 0, 717.523, -105.913, 0, 0, 0, 0, 663.34, -169.085, 0, 0, 0, 0, 619.995, -153.024, 0, 0, 0, 0, 472.778, -65.2263, 0, 0, 0, 0, 411.934, -56.6607, 0, 0, 0, 0, 346.916, -133.751, 31.498, 8.81945, -31.498, -8.81945, 195.512, -167.538, 0, 0, 0, 0, 115.54, -76.1207 )
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 24, 24 )
+
+[node name="GameScreen" type="Node"]
+script = ExtResource( 1 )
+playerOnePath = NodePath("Polygon2D/Path2D2/PlayerOne")
+playerTwoPath = NodePath("Polygon2D/Path2D/PlayerTwo")
+playerOneButtonPath = NodePath("Level/VBoxContainer/Buttons/HBoxContainer/MarginContainer/PlayerOneButton")
+playerTwoButtonPath = NodePath("Level/VBoxContainer/Buttons/HBoxContainer/MarginContainer2/PlayerTwoButton")
+playerOneSpeedLabelPath = NodePath("Level/VBoxContainer/Buttons/HBoxContainer/MarginContainer4/PlayerOneSpeed")
+playerTwoSpeedLabelPath = NodePath("Level/VBoxContainer/Buttons/HBoxContainer/MarginContainer3/PlayerTwoSpeed")
+trailOnePath = NodePath("TrailPlayerOne")
+trailTwoPath = NodePath("TrailPlayerTwo")
+
+[node name="Level" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Level"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -5.0
+margin_top = -715.0
+margin_right = -5.0
+margin_bottom = 5.0
+rect_min_size = Vector2( 1280, 720 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="MarginContainer" parent="Level/VBoxContainer"]
+margin_top = 595.0
+margin_right = 1280.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 1280, 125 )
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Level/VBoxContainer/Buttons"]
+margin_right = 1280.0
+margin_bottom = 125.0
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Level/VBoxContainer/Buttons/HBoxContainer"]
+margin_right = 317.0
+margin_bottom = 125.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="PlayerOneButton" type="Button" parent="Level/VBoxContainer/Buttons/HBoxContainer/MarginContainer"]
+margin_left = 96.0
+margin_top = 12.0
+margin_right = 221.0
+margin_bottom = 112.0
+rect_min_size = Vector2( 125, 100 )
+size_flags_horizontal = 6
+size_flags_vertical = 4
+custom_styles/normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer4" type="MarginContainer" parent="Level/VBoxContainer/Buttons/HBoxContainer"]
+margin_left = 321.0
+margin_right = 638.0
+margin_bottom = 125.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlayerOneSpeed" type="Label" parent="Level/VBoxContainer/Buttons/HBoxContainer/MarginContainer4"]
+margin_right = 317.0
+margin_bottom = 125.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 7 )
+align = 1
+valign = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="Level/VBoxContainer/Buttons/HBoxContainer"]
+margin_left = 642.0
+margin_right = 959.0
+margin_bottom = 125.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlayerTwoSpeed" type="Label" parent="Level/VBoxContainer/Buttons/HBoxContainer/MarginContainer3"]
+margin_right = 317.0
+margin_bottom = 125.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 7 )
+align = 1
+valign = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Level/VBoxContainer/Buttons/HBoxContainer"]
+margin_left = 963.0
+margin_right = 1280.0
+margin_bottom = 125.0
+mouse_filter = 1
+size_flags_horizontal = 3
+
+[node name="PlayerTwoButton" type="Button" parent="Level/VBoxContainer/Buttons/HBoxContainer/MarginContainer2"]
+margin_left = 96.0
+margin_top = 12.0
+margin_right = 221.0
+margin_bottom = 112.0
+rect_min_size = Vector2( 125, 100 )
+size_flags_horizontal = 6
+size_flags_vertical = 4
+custom_styles/normal = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Debug2D" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+defaultArrowAngle = 60.0
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( 238, 169 )
+scale = Vector2( 0.922811, 0.933965 )
+color = Color( 0.929412, 0.811765, 0.0431373, 1 )
+polygon = PoolVector2Array( 237.057, 392.948, 252.228, 403.655, 307.494, 280.524, 362.76, 253.757, 448.368, 280.524, 427.779, 433.635, 448.368, 442.201, 518.805, 320.14, 571.904, 289.09, 645.853, 270.888, 712.018, 297.656, 746.281, 352.262, 753.776, 437.918, 940.078, 394.019, 1013.21, 360.827, 1044.63, 303.009, 1008.87, 293.373, 922.182, 311.575, 857.164, 282.666, 806.232, 213.07, 780.225, 141.333, 780.225, 117.777, 680.53, 198.08, 565.663, 270.888, 515.815, 279.454, 493.059, 271.959, 470.302, 251.615, 457.298, 221.636, 456.215, 169.171, 472.47, 122.06, 499.561, 103.858, 524.484, 92.0805, 551.576, 89.9391, 581.918, 101.717, 619.845, 119.919, 650.187, 139.191, 710.872, 193.797, 754.217, 217.353, 793.229, 219.494, 877.753, 215.211, 924.35, 234.484, 902.677, 261.252, 882.088, 279.454, 736.879, 263.393, 710.872, 260.181, 683.78, 236.626, 613.344, 188.444, 599.256, 178.808, 580.834, 162.747, 541.823, 145.616, 510.397, 149.899, 498.477, 169.171, 496.31, 189.515, 506.063, 216.282, 555.91, 219.494, 619.845, 188.444, 801.898, 52.4645, 849.578, 182.02, 861.498, 206.646, 921.921, 252.686, 1051.96, 220.565, 1084.47, 218.424, 1103.47, 268.088, 1082.56, 352.262, 1037.05, 407.938, 970.947, 445.413, 813.818, 475.393, 718.457, 488.241, 705.453, 406.867, 675.111, 354.403, 622.013, 340.484, 580.834, 347.979, 534.237, 390.807, 481.139, 481.817, 418.287, 501.089, 374.941, 477.534, 397.231, 334.06, 375.817, 345.837, 300.992, 449.696, 254.395, 498.948, 205.631, 490.382, 181.791, 462.544, 185.232, 407.938, 194.868, 349.049, 234.89, 285.878, 239.224, 219.494, 222.97, 192.727, 193.711, 221.636, 154.905, 293.359, 102.685, 342.625, 17.0769, 313.716, -5.67963, 264.464, -29.5198, 262.322, -131.383, 305.151, -193.15, 256.969, -196.14, 160.606, -158.212, 108.141, -47.6804, 84.5856, -131.121, 97.434, -226.482, 97.434, -243.76, -4.65435, -190.585, -85.6563, -149.805, -130.626, -41.4399, -171.313, 65.0187, -153.111, 130.037, -148.828, 230.817, -36.4039, 265.493, -20.3434, 295.835, -32.1211, 328.345, -95.2926, 373.858, -106, 421.538, -94.222, 499.561, -74.9493, 547.241, -58.8887, 609.009, 5.35352, 642.602, 3.2121, 669.693, -16.0606, 696.784, -33.1918, 736.879, -51.3938, 758.552, -67.4544, 794.312, -86.727, 850.662, -101.717, 897.259, -54.6059, 942.772, -37.4746, 994.787, -55.6766, 1028.38, -62.1008, 1054.39, -56.7473, 1076.06, -6.42424, 1045.72, 133.838, 1022.96, 176.666, 986.118, 204.504, 923.266, 233.413, 895.091, 229.131, 877.753, 215.211, 911.346, 184.161, 943.855, 158.464, 987.201, 128.484, 1017.54, 84.5856, 1019.71, 29.9797, 1007.79, 8.56563, 965.528, 13.9191, 911.346, 23.5555, 865.833, -12.8485, 826.822, -48.1817, 802.981, -39.6161, 768.305, -16.0606, 733.628, 7.49492, 705.453, 24.6262, 667.526, 47.111, 614.427, 59.9594, 578.667, 58.8887, 524.484, -1.07071, 494.142, -21.4141, 451.88, -32.1211, 399.865, -43.8989, 354.352, -47.111, 329.428, -19.2727, 311.006, 33.1918, 256.824, 43.8988, 215.645, 26.7676, 193.973, 6.42421, 114.866, -91.0098, -32.7708, -87.7977, -101.863, -66.3837, -141.135, -23.5555, -187.732, 13.9192, -179.063, 48.1817, -117.295, 54.6059, -62.0292, 36.4039, -6.76328, 41.7575, 9.49142, 74.9493, 2.98956, 109.212, -2.42868, 148.828, -117.034, 158.464, -139.79, 182.02, -135.456, 211.999, -109.448, 230.201, -28.4362, 190.585, 4.28284, 189.515, 43.0844, 206.646, 47.419, 262.322, 94.0158, 270.888, 130.86, 262.322, 146.031, 230.201, 205.631, 131.697, 254.395, 115.636, 289.072, 169.171 )
+
+[node name="Area2D" type="Area2D" parent="Polygon2D"]
+visible = false
+position = Vector2( 1.43155, -0.371536 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Polygon2D/Area2D"]
+position = Vector2( 259.11, 17.1313 )
+scale = Vector2( 1.475, 1 )
+shape = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Polygon2D/Area2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="Polygon2D/Area2D"]
+color = Color( 0.101961, 0.921569, 0.152941, 1 )
+polygon = PoolVector2Array( 278.383, -28.909, 238.767, -32.1211, 243.05, 71.7372, 276.242, 67.4543 )
+
+[node name="Path2D2" type="Path2D" parent="Polygon2D"]
+position = Vector2( 182.22, 74.61 )
+curve = SubResource( 2 )
+
+[node name="PlayerOne" type="Area2D" parent="Polygon2D/Path2D2"]
+position = Vector2( 59.9968, -132.205 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Polygon2D/Path2D2/PlayerOne"]
+shape = SubResource( 3 )
+one_way_collision = true
+
+[node name="Sprite" type="Sprite" parent="Polygon2D/Path2D2/PlayerOne"]
+scale = Vector2( 0.0403124, 0.0403124 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Polygon2D/Path2D2/PlayerOne"]
+color = Color( 0.0235294, 0.105882, 0.972549, 1 )
+polygon = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
+
+[node name="Path2D" type="Path2D" parent="Polygon2D"]
+self_modulate = Color( 0.952941, 0.0392157, 0.192157, 0.701961 )
+position = Vector2( 168.638, 89.8525 )
+curve = SubResource( 2 )
+
+[node name="PlayerTwo" type="Area2D" parent="Polygon2D/Path2D"]
+position = Vector2( 59.9968, -132.205 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Polygon2D/Path2D/PlayerTwo"]
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Polygon2D/Path2D/PlayerTwo"]
+scale = Vector2( 0.0403124, 0.0403124 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Polygon2D/Path2D/PlayerTwo"]
+color = Color( 0.972549, 0.0235294, 0.290196, 1 )
+polygon = PoolVector2Array( -24, -24, 24, -24, 24, 24, -24, 24 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Polygon2D"]
+
+[node name="TrailPlayerOne" type="Line2D" parent="."]
+default_color = Color( 0.0509804, 0.25098, 0.933333, 1 )
+script = ExtResource( 4 )
+targetPath = NodePath("../Polygon2D/Path2D2/PlayerOne")
+
+[node name="TrailPlayerTwo" type="Line2D" parent="."]
+default_color = Color( 1, 0.4, 0.568627, 1 )
+script = ExtResource( 4 )
+targetPath = NodePath("../Polygon2D/Path2D/PlayerTwo")
+
+[node name="Tween1" type="Tween" parent="."]
+
+[node name="Tween3" type="Tween" parent="."]
+
+[node name="Tween4" type="Tween" parent="."]
+
+[node name="Tween5" type="Tween" parent="."]
+
+[node name="Tween6" type="Tween" parent="."]
+
+[node name="Tween2" type="Tween" parent="."]
+
+[node name="Clouds" type="Sprite" parent="."]
+position = Vector2( 640, 360 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 8 )
+script = ExtResource( 9 )
