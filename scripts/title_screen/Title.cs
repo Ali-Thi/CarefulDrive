@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class title : Sprite
+public class Title : Sprite
 {
 	private bool animated = false;
 	

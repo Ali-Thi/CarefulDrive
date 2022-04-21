@@ -1,7 +1,7 @@
 using Godot;
 using System.Collections.Generic;
 
-public class debug2D : Control
+public class Debug2D : Control
 {
 	public static Debug2D Instance { get; private set; }
 

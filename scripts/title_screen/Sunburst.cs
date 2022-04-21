@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class sunburst : Sprite
+public class Sunburst : Sprite
 {
 	private bool animated = false;
 	

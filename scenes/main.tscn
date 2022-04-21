@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://scripts/Main.cs" type="Script" id=1]
+[ext_resource path="res://scripts/main.cs" type="Script" id=1]
 [ext_resource path="res://scripts/Debug2D.cs" type="Script" id=2]
 [ext_resource path="res://scripts/Player.cs" type="Script" id=3]
 [ext_resource path="res://scripts/Utils/Effects/Trail.cs" type="Script" id=4]
@@ -236,7 +236,7 @@ targetPath = NodePath("../Polygon2D/Path2D/PlayerTwo")
 [node name="Tween2" type="Tween" parent="."]
 
 [node name="Clouds" type="Sprite" parent="."]
-position = Vector2( 640, 360 )
-scale = Vector2( 2, 2 )
+position = Vector2( 642.5, 360 )
+scale = Vector2( 2.05911, 2 )
 texture = ExtResource( 8 )
 script = ExtResource( 9 )

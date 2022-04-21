@@ -13,13 +13,11 @@
 [ext_resource path="res://scripts/end_screen/CloudsEndScene.cs" type="Script" id=11]
 [ext_resource path="res://assets/title_screen/clouds.png" type="Texture" id=12]
 [ext_resource path="res://scripts/end_screen/ButtonsContainer.cs" type="Script" id=13]
+[ext_resource path="res://assets/end_screen/replay_button.png" type="Texture" id=14]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
 load_path = "res://.import/background.png-eb86babd55424d6cbb38e9ce5977be67.stex"
-
-[sub_resource type="StreamTexture" id=2]
-flags = 4
 
 [node name="EndScreen" type="Node"]
 
@@ -52,8 +50,8 @@ position = Vector2( 633, 200 )
 texture = ExtResource( 6 )
 
 [node name="Clouds" type="Sprite" parent="CanvasLayer/Sprites"]
-position = Vector2( 640, 360 )
-scale = Vector2( 2, 2 )
+position = Vector2( 639, 360 )
+scale = Vector2( 2.05112, 2 )
 texture = ExtResource( 12 )
 script = ExtResource( 11 )
 __meta__ = {
@@ -97,7 +95,7 @@ margin_bottom = 116.0
 rect_pivot_offset = Vector2( 61, 58 )
 size_flags_horizontal = 7
 size_flags_vertical = 7
-icon = SubResource( 2 )
+icon = ExtResource( 14 )
 flat = true
 script = ExtResource( 10 )
 
